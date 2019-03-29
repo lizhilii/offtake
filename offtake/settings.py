@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',# 富文本编辑器
     'cart',
     'goods',
     'order',
-    'user'
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,8 @@ DATABASES = {
     }
 }
 
+# django认证系统使用的模型类
+AUTH_USER_MODEL = 'user.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -131,3 +134,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# 配置富文本编辑器
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'width': 600,
+    'height': 400,
+}
