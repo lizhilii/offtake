@@ -1,19 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# from django.conf import settings
-# from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from django.conf import settings
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from db.banse_model import BaseModel
 
 
 class User(AbstractUser, BaseModel):
     '''用户模型类'''
 
-    # def generate_activate_token(self):
-    #     '''生成用户签字字符串（用于加密）'''
-    #     serializer = Serializer(settings.SECRET_KEY, 3600)
-    #     info = {'confirm': self.id}
-    #     token = serializer.dump(info)
-    #     return token.decode()
+    def generate_activate_token(self):
+        '''生成用户签字字符串（用于加密）'''
+        serializer = Serializer(settings.SECRET_KEY, 3600)
+        info = {'confirm': self.id}
+        token = serializer.dumps(info)
+        return token.decode()
+
+
 
     class Meta:
         db_table = 'offtake_user'

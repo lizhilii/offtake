@@ -141,3 +141,12 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 600,
     'height': 400,
 }
+
+# 发送邮箱设置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'lzl_blog@163.com'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD'] # 授权码
+EMAIL_SUBJECT_PREFIX = '[李智力的博客]'
+EMAIL_USE_TLS = True
